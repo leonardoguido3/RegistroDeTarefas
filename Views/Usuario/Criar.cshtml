@@ -1,0 +1,44 @@
+﻿@model UsuarioModel
+@{
+    ViewData["Title"] = "Cadastrar Usuário";
+}
+
+<section id="criar-usuario">
+    <div class="text-center">
+        <h3 class="display-6">Cadastrar Usuario</h3>
+    </div>
+    <br />
+    <div>
+        <form asp-controller="Usuario" asp-action="Criar" method="post">
+            <div class="form-group">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome">
+                @Html.ValidationMessageFor(x => x.Nome)
+            </div>
+
+            <div class="form-group">
+                <label for="Email" class="form-label">E-mail</label>
+                <input type="text" asp-for="Email" class="form-control" placeholder="Digite o Email">
+                @Html.ValidationMessageFor(x => x.Email)
+            </div>
+
+            <div class="form-group">
+                <label for="Perfil" class="form-label">Perfil de Acesso</label>
+                <select asp-for="Perfil" class="form-control">
+                    <option value="0">Selecione</option>
+                    <option value="@UsuarioModel.PerfilAcesso.Admin">Gestor</option>
+                    <option value="@UsuarioModel.PerfilAcesso.Desenvolvedor">DEV</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Senha" class="form-label">Senha</label>
+                <input type="password" asp-for="Senha" class="form-control" placeholder="Digite a senha">
+                @Html.ValidationMessageFor(x => x.Senha)
+            </div>
+            <br />
+            <button type="submit" class="btn btn-success">Adicionar</button>
+            <a class="btn btn-danger" role="button" asp-action="Index" asp-controller="Usuario">Cancelar</a>
+        </form>
+    </div>
+</section>

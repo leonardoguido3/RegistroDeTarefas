@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistroDeTarefasWebApp", "RegistroDeTarefasWebApp.csproj", "{1E89AD9F-15DA-4A3D-98EA-3C352F5F9A5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E89AD9F-15DA-4A3D-98EA-3C352F5F9A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E89AD9F-15DA-4A3D-98EA-3C352F5F9A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E89AD9F-15DA-4A3D-98EA-3C352F5F9A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E89AD9F-15DA-4A3D-98EA-3C352F5F9A5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {735FC320-C5BD-4329-9C98-BDB51B5F69BD}
+	EndGlobalSection
+EndGlobal

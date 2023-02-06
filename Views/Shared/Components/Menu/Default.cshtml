@@ -1,0 +1,31 @@
+﻿@model UsuarioModel
+
+
+<div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+        <div>
+            <a class="nav_logo">
+                <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">@Model.Nome<br />@Model.Perfil</span>
+            </a>
+            <div class="nav_list">
+                <a class="nav_link" asp-area="" asp-controller="Home" asp-action="Index"><i class='bx bx-grid-alt nav_icon'></i><span class="nav_name">Dashboard</span></a>
+                
+                <a class="nav_link" asp-area="" asp-controller="Tarefa" asp-action="Index"><i class='bx bx-briefcase nav_icon'></i><span class="nav_name">Tarefas</span></a>
+
+                @if (Model.Perfil == UsuarioModel.PerfilAcesso.Admin)
+                {
+                    <a class="nav_link" asp-area="" asp-controller="Empresa" asp-action="Index"><i class='bx bx-buildings nav_icon'></i><span class="nav_name">Empresas</span></a>
+
+                    <a class="nav_link" asp-area="" asp-controller="Usuario" asp-action="Index"><i class='bx bx-user nav_icon'></i><span class="nav_name">Usuarios</span></a>
+
+                    <a class="nav_link" asp-area="" asp-controller="Home" asp-action="Index" onclick="BaixarRelatorio()"><i class='bx bx-pie-chart-alt-2 nav_icon'></i><span class="nav_name">Relatório Tarefa</span>
+
+                    </a>
+                }
+
+            </div>
+        </div> <a asp-action="Sair" asp-controller="Login" class="nav_link">
+            <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sair</span>
+        </a>
+    </nav>
+</div>

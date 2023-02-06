@@ -1,0 +1,67 @@
+﻿@model List<TarefaModel>
+@{
+    ViewData["Title"] = "Tarefas";
+}
+
+<section id="inicio-tarefa">
+    <br />
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-outline-danger btn-sm close-alert close-button" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-outline-danger btn-sm close-alert close-button" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <div class="text-center">
+        <h3 class="display-6">Lista de Tarefas</h3>
+        <br />
+        <a asp-action="Criar" asp-controller="Tarefa" role="button" class="btn btn-success">Adicionar Tarefa</a>
+    </div>
+    <table id="tabelaTarefa" style="width:100%" class="table table-striped table-bordered overflow-auto">
+        <thead>
+            <tr>
+                <th scope="col">EMPRESA</th>
+                <th scope="col">DESCRIÇÃO</th>
+                <th scope="col">DATA INICIO</th>
+                <th scope="col">DATA FINAL</th>
+                <th scope="col">TIPO DE TAREFA</th>
+                <th scope="col">OBSERVAÇÕES</th>
+                <th scope="col">COLABORADOR</th>
+                <th scope="col">OPÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (TarefaModel tarefa in Model)
+                {
+                    <tr>
+                        <th scope="row">@tarefa.Empresa.ToUpper()</th>
+                        <td>@tarefa.DescricaoResumo.ToUpper()</td>
+                        <td>@tarefa.HorarioInicio</td>
+                        <td>@tarefa.HorarioFim</td>
+                        <td>@tarefa.TipoTarefa</td>
+                        <td>@tarefa.Descricao.ToUpper()</td>
+                        <td>@tarefa.Usuario.ToUpper()</td>
+                        <td>
+                            <a role="button" class="btn btn-primary btn-sm" asp-route-id="@tarefa.Id" asp-action="Editar" asp-controller="Tarefa">Editar</a>
+                            <a role="button" class="btn btn-danger btn-sm" asp-route-id="@tarefa.Id" asp-action="ApagarConfirmacao" asp-controller="Tarefa">Apagar</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="8">Nenhuma tarefa encontrada!</td></tr>
+            }
+        </tbody>
+    </table>
+</section>

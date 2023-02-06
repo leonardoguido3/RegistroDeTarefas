@@ -1,0 +1,53 @@
+﻿@model LoginModel
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Tittle"] = "Login";
+}
+
+<section id="login">
+    @if (TempData["notification"] != null)
+    {
+        @Html.Raw(TempData["notification"])
+    }
+    <div class="login-box">
+
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <h1>Registros</h1>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Login</p>
+
+                <form asp-action="Entrar" asp-controller="Login" method="post">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" asp-for="Login" id="Login">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" asp-for="Senha" id="Senha">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 btnSubmit mt-4">
+                            <input type="submit" value="Entrar" class="btn btn-primary btn-block"></input>
+                        </div>
+                        @Html.ValidationMessageFor(x => x.Login)
+                        @Html.ValidationMessageFor(x => x.Senha)
+                    </div>
+                </form>
+            </div>
+            <div id="login-box-msg">
+                <a class="text-center" style="margin-left:29%" asp-action="RedefinirSenha" asp-controller="Login">Esqueceu a senha?</a>
+            </div>
+        </div>
+    </div>
+</section>

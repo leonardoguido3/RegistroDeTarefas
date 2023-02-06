@@ -1,0 +1,45 @@
+﻿@model RedefinirSenhaModel
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Tittle"] = "Redefinir Senha";
+}
+
+<section id="redefinir-senha">
+
+    <div class="login-box">
+
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <h1>Redefinir Senha</h1>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Login" asp-action="EnviarLinkParaRedefinirSenha" method="post">
+                    <div class="form-group">
+                        <label for="nome" class="form-label">Email</label>
+                        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o seu email">
+                        @Html.ValidationMessageFor(x => x.Email)
+                    </div>
+                    <br />
+                    <div style="margin-left:20%">
+                        <button type="submit" class="btn btn-success">Redefinir</button>
+                        <a class="btn btn-danger" role="button" asp-action="Index" asp-controller="Usuario">Cancelar</a>
+                    </div>              
+                </form>
+            </div>
+            @if (TempData["MensagemSucesso"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="btn btn-outline-danger btn-sm close-alert close-button" arial-label="Close">X</button>
+                    @TempData["MensagemSucesso"]
+                </div>
+            }
+            @if (TempData["MensagemErro"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="btn btn-outline-danger btn-sm close-alert close-button" arial-label="Close">X</button>
+                    @TempData["MensagemErro"]
+                </div>
+            }
+        </div>
+    </div>
+</section>

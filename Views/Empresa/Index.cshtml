@@ -1,0 +1,58 @@
+﻿@model List<EmpresaModel>
+@{
+    ViewData["Title"] = "DashBoard";
+}
+
+<section id="listaEmpresa">
+    <br />
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-outline-danger btn-sm close-alert close-button" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-outline-danger btn-sm close-alert close-button" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+    <div class="text-center">
+        <h3 class="display-6">Lista de Empresas</h3>
+        <br />
+        <a asp-action="Criar" asp-controller="Empresa" role="button" class="btn btn-success">Adicionar Empresa</a>
+    </div>
+    <table id="tabelaEmpresa" style="width:100%" class="table table-striped table-bordered overflow-auto">
+        <thead>
+            <tr>
+                <th scope="col">CNPJ</th>
+                <th scope="col">NOME</th>
+                <th scope="col">DATA CADASTRO</th>
+                <th scope="col">OPÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (EmpresaModel empresa in Model)
+                {
+                    <tr>
+                        <th scope="row">@empresa.Cnpj</th>
+                        <td>@empresa.RazaoSocial.ToUpper()</td>
+                        <td>@empresa.DataCadastro.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a role="button" class="btn btn-primary btn-sm" asp-route-id="@empresa.Id" asp-action="Editar" asp-controller="Empresa">Editar</a>
+                            <a role="button" class="btn btn-danger btn-sm" asp-route-id="@empresa.Id" asp-action="ApagarConfirmacao" asp-controller="Empresa">Apagar</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="8">Nenhuma empresa encontrada!</td></tr>
+            }
+        </tbody>
+    </table>
+</section>

@@ -1,0 +1,52 @@
+﻿@model TarefaModel
+@{
+    ViewData["Title"] = "Alterar Tarefa";
+}
+
+<section id="editar-tarefa">
+    <div class="text-center">
+        <h3 class="display-6">Alterando tarefa @Model.DescricaoResumo</h3>
+    </div>
+    <br />
+    <div>
+        <form asp-controller="Tarefa" asp-action="Atualizar" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label for="titulo" class="form-label">Titulo</label>
+                <input type="text" disabled asp-for="DescricaoResumo" class="form-control" placeholder="Digite a descrição">
+                @Html.ValidationMessageFor(x => x.DescricaoResumo)
+            </div>
+
+            <div class="form-group">
+                <label for="horaInicio" class="form-label">Hora Inicio</label>
+                <input type="datetime-local" disabled asp-for="HorarioInicio" class="form-control">
+                @Html.ValidationMessageFor(x => x.HorarioInicio)
+            </div>
+
+            <div class="form-group">
+                <label for="horaFim" class="form-label">Hora Finalização</label>
+                <input type="datetime-local" asp-for="HorarioFim" class="form-control">
+                @Html.ValidationMessageFor(x => x.HorarioFim)
+            </div>
+
+            <div class="form-group">
+                <label for="tipoTarefa" class="form-label">Tipo de tarefa</label>
+                <select asp-for="TipoTarefa" disabled class="form-control">
+                    <option value="0"> Selecione</option>
+                    <option value="@TarefaModel.Tipo.Reunião"> Reunião</option>
+                    <option value="@TarefaModel.Tipo.Contexto"> Quebra de contexto</option>
+                    <option value="@TarefaModel.Tipo.Tarefa"> Tarefa</option>
+                </select>
+                @Html.ValidationMessageFor(x => x.TipoTarefa)
+            </div>
+
+            <div class="mb-3">
+                <label for="relato" class="form-label">Observações</label>
+                <textarea asp-for="Descricao" placeholder="Observações adicionais" class="form-control" rows="3"></textarea>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-success">Alterar</button>
+            <a class="btn btn-danger" asp-controller="Empresa" asp-action="Index">Cancelar</a>
+        </form>
+    </div>
+</section>
