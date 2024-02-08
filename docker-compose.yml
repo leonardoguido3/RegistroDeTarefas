@@ -1,8 +1,8 @@
-version: '3.3'
+version: '2.2'
 services:
   registrotarefas:
-    container_name: registrotarefas
-    image: registrotarefas
+    container_name: registrodetarefas
+    image: registrodetarefas
     ports:
       - 8080:80
     environment:
